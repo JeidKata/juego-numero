@@ -26,8 +26,7 @@ function verificarIntento() {
 }
 
 function limpiarCaja(){
-    let nUsuario = document.querySelector("#numero");
-    nUsuario.value = "";
+    document.querySelector("#numero").value = "";
 }
 
 function asignarTextoElemento(elemento, texto){
