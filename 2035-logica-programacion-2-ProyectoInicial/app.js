@@ -6,8 +6,14 @@ actualizaciones de contenido en tiempo real.
 */
 let numeroSecreto = generarNumeroSecreto();
 
-function intentoDeUsuario() {
-    alert("Click desde el botón Intentar");
+function verificarIntento() {
+    let numeroUsuario = parseInt(document.getElementById("numero").value);
+    console.log(numeroSecreto)
+    console.log(numeroUsuario);
+    console.log(typeof (numeroSecreto));
+    console.log(typeof (numeroUsuario));
+    console.log(numeroSecreto === numeroUsuario)
+    return;
 }
 
 function asignarTextoElemento(elemento, texto){
@@ -21,4 +27,3 @@ function generarNumeroSecreto(){
 
 asignarTextoElemento("h1", "Juego del número secreto");
 asignarTextoElemento(".texto__parrafo", "Indica un número secreto entre 1 y 10. ¡Buena suerte!");
-console.log(numeroSecreto)
