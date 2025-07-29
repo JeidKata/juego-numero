@@ -8,11 +8,16 @@ let numeroSecreto = generarNumeroSecreto();
 
 function verificarIntento() {
     let numeroUsuario = parseInt(document.getElementById("numero").value);
-    console.log(numeroSecreto)
-    console.log(numeroUsuario);
-    console.log(typeof (numeroSecreto));
-    console.log(typeof (numeroUsuario));
-    console.log(numeroSecreto === numeroUsuario)
+    
+    if (numeroSecreto === numeroUsuario){
+        asignarTextoElemento(".texto__parrafo", "¡Felicidades! Adivinaste el número secreto.");
+    }else {
+        if (numeroUsuario > numeroSecreto) {
+            asignarTextoElemento(".texto__parrafo", "El número secreto es menor.");
+        } else {
+            asignarTextoElemento(".texto__parrafo", "El número secreto es mayor.");
+        }
+    }
     return;
 }
 
