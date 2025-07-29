@@ -13,14 +13,21 @@ function verificarIntento() {
     if (numeroSecreto === numeroUsuario){
         asignarTextoElemento(".texto__parrafo", `¡Felicidades! Adivinaste el número secreto en ${intentos} ${intentos === 1 ? "intento": "intentos"}.`);
     }else {
+        // El usuario no acertó.
         if (numeroUsuario > numeroSecreto) {
             asignarTextoElemento(".texto__parrafo", "El número secreto es menor.");
         } else {
             asignarTextoElemento(".texto__parrafo", "El número secreto es mayor.");
         }
         intentos++;
+        limpiarCaja();
     }
     return;
+}
+
+function limpiarCaja(){
+    let nUsuario = document.querySelector("#numero");
+    nUsuario.value = "";
 }
 
 function asignarTextoElemento(elemento, texto){
