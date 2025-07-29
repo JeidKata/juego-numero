@@ -5,18 +5,20 @@ Permite la creación de funcionalidades como animaciones, validaciones de formul
 actualizaciones de contenido en tiempo real. 
 */
 let numeroSecreto = generarNumeroSecreto();
+let intentos = 1;
 
 function verificarIntento() {
     let numeroUsuario = parseInt(document.getElementById("numero").value);
-    
+    console.log(intentos);
     if (numeroSecreto === numeroUsuario){
-        asignarTextoElemento(".texto__parrafo", "¡Felicidades! Adivinaste el número secreto.");
+        asignarTextoElemento(".texto__parrafo", `¡Felicidades! Adivinaste el número secreto en ${intentos} ${intentos === 1 ? "intento": "intentos"}.`);
     }else {
         if (numeroUsuario > numeroSecreto) {
             asignarTextoElemento(".texto__parrafo", "El número secreto es menor.");
         } else {
             asignarTextoElemento(".texto__parrafo", "El número secreto es mayor.");
         }
+        intentos++;
     }
     return;
 }
