@@ -7,6 +7,7 @@ actualizaciones de contenido en tiempo real.
 let numeroSecreto = 0;
 let intentos = 0;
 let listaNumerosSecretos = [];
+let numeroMaximo = 10;
 
 function verificarIntento() {
     let numeroUsuario = parseInt(document.getElementById("numero").value);
@@ -38,15 +39,22 @@ function asignarTextoElemento(elemento, texto){
 }
 
 function generarNumeroSecreto(){
-    let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    let numeroSecreto = Math.floor(Math.random() * numeroMaximo) + 1;
     console.log(numeroSecreto);
     console.log(listaNumerosSecretos);
-    //si el número secreto generado está incluido en la lista
-    if (listaNumerosSecretos.includes(numeroSecreto)) {
-        return generarNumeroSecreto(); // Genera un nuevo número si ya existe
-    }else {
-        listaNumerosSecretos.push(numeroSecreto); // Agrega el nuevo número a la lista
-        return numeroSecreto; // Retorna el número secreto único
+    // Si ya sorteamos todos los números
+    if (listaNumerosSecretos.length == numeroMaximo) {
+        asignarTextoElemento(".texto__parrafo", "No quedan números secretos por adivinar. Reinicia el juego.");
+        return; // No genera un nuevo número si ya se han usado todos
+    }else{
+
+        //si el número secreto generado está incluido en la lista
+        if (listaNumerosSecretos.includes(numeroSecreto)) {
+            return generarNumeroSecreto(); // Genera un nuevo número si ya existe
+        }else {
+            listaNumerosSecretos.push(numeroSecreto); // Agrega el nuevo número a la lista
+            return numeroSecreto; // Retorna el número secreto único
+        }
     }
 }
 
