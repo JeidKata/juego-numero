@@ -4,8 +4,8 @@ Es responsable de agregar interactividad y dinamismo a las páginas.
 Permite la creación de funcionalidades como animaciones, validaciones de formularios y 
 actualizaciones de contenido en tiempo real. 
 */
-let numeroSecreto = generarNumeroSecreto();
-let intentos = 1;
+let numeroSecreto = 0;
+let intentos = 0;
 
 function verificarIntento() {
     let numeroUsuario = parseInt(document.getElementById("numero").value);
@@ -40,5 +40,24 @@ function generarNumeroSecreto(){
     return Math.floor(Math.random() * 10) + 1;
 }
 
-asignarTextoElemento("h1", "Juego del número secreto");
-asignarTextoElemento(".texto__parrafo", "Indica un número secreto entre 1 y 10. ¡Buena suerte!");
+function condicionesIniciales(){
+    asignarTextoElemento("h1", "Juego del número secreto");
+    asignarTextoElemento(".texto__parrafo", "Indica un número secreto entre 1 y 10. ¡Buena suerte!");
+    numeroSecreto = generarNumeroSecreto();
+    intentos = 1;
+}
+
+function reiniciarJuego() {
+    /*limpiar caja
+    Mensaje de inicio
+    generar el numero aleatorio
+    inicializar el numero de intentos
+    desactivar boton reiniciar*/
+    limpiarCaja();
+    mensajeIniciales();
+    condicionesIniciales();
+    document.querySelector("#reiniciar").setAttribute("disabled", "true");
+
+}
+
+condicionesIniciales();
