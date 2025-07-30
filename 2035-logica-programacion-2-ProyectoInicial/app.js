@@ -6,6 +6,7 @@ actualizaciones de contenido en tiempo real.
 */
 let numeroSecreto = 0;
 let intentos = 0;
+let listaNumerosSecretos = [];
 
 function verificarIntento() {
     let numeroUsuario = parseInt(document.getElementById("numero").value);
@@ -37,7 +38,16 @@ function asignarTextoElemento(elemento, texto){
 }
 
 function generarNumeroSecreto(){
-    return Math.floor(Math.random() * 10) + 1;
+    let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    console.log(numeroSecreto);
+    console.log(listaNumerosSecretos);
+    //si el número secreto generado está incluido en la lista
+    if (listaNumerosSecretos.includes(numeroSecreto)) {
+        return generarNumeroSecreto(); // Genera un nuevo número si ya existe
+    }else {
+        listaNumerosSecretos.push(numeroSecreto); // Agrega el nuevo número a la lista
+        return numeroSecreto; // Retorna el número secreto único
+    }
 }
 
 function condicionesIniciales(){
@@ -54,7 +64,6 @@ function reiniciarJuego() {
     inicializar el numero de intentos
     desactivar boton reiniciar*/
     limpiarCaja();
-    mensajeIniciales();
     condicionesIniciales();
     document.querySelector("#reiniciar").setAttribute("disabled", "true");
 
